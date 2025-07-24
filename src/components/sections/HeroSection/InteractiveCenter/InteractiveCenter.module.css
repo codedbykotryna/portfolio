@@ -1,0 +1,212 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.9) 0%, 
+    rgba(51, 65, 85, 0.8) 50%, 
+    rgba(30, 41, 59, 0.9) 100%
+  );
+  border-radius: var(--border-radius-xl);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  transform-style: preserve-3d;
+}
+
+.codeBlock {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: var(--border-radius-md);
+  backdrop-filter: blur(10px);
+  padding: var(--space-sm) var(--space-md);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.codeBlock:hover {
+  transform: translateZ(10px) scale(1.05);
+  border-color: rgba(96, 165, 250, 0.8);
+  box-shadow: 
+    0 8px 32px rgba(96, 165, 250, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.codeContent {
+  position: relative;
+  z-index: 2;
+}
+
+.codeText {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+  font-size: 14px;
+  color: #e2e8f0;
+  line-height: 1.4;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.glow {
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.3) 0%,
+    rgba(168, 85, 247, 0.2) 50%,
+    rgba(96, 165, 250, 0.3) 100%
+  );
+  border-radius: var(--border-radius-xl);
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(20px);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: var(--border-radius-xl);
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 4s ease-in-out infinite;
+}
+
+.particle1 {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+  animation-duration: 3s;
+}
+
+.particle2 {
+  top: 30%;
+  left: 80%;
+  animation-delay: 0.5s;
+  animation-duration: 4s;
+}
+
+.particle3 {
+  top: 60%;
+  left: 15%;
+  animation-delay: 1s;
+  animation-duration: 3.5s;
+}
+
+.particle4 {
+  top: 80%;
+  left: 70%;
+  animation-delay: 1.5s;
+  animation-duration: 4.5s;
+}
+
+.particle5 {
+  top: 20%;
+  left: 60%;
+  animation-delay: 2s;
+  animation-duration: 3s;
+}
+
+.particle6 {
+  top: 70%;
+  left: 40%;
+  animation-delay: 2.5s;
+  animation-duration: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Code syntax highlighting */
+.codeText {
+  color: #e2e8f0;
+}
+
+/* Keywords */
+.codeBlock:nth-child(1) .codeText,
+.codeBlock:nth-child(4) .codeText {
+  color: #8b5cf6; /* Purple for keywords */
+}
+
+/* Variables/properties */
+.codeBlock:nth-child(2) .codeText {
+  color: #10b981; /* Green for variables */
+}
+
+/* Strings */
+.codeBlock:nth-child(3) .codeText {
+  color: #f59e0b; /* Orange for strings */
+}
+
+/* Braces */
+.codeBlock:last-child .codeText {
+  color: #60a5fa; /* Blue for braces */
+}
+
+@media (max-width: 768px) {
+  .container {
+    min-height: 300px;
+  }
+  
+  .codeText {
+    font-size: 12px;
+  }
+  
+  .codeBlock {
+    padding: var(--space-xs) var(--space-sm);
+  }
+  
+  .particle {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    min-height: 250px;
+  }
+  
+  .codeText {
+    font-size: 10px;
+  }
+}
