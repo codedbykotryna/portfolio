@@ -17,14 +17,48 @@ const AboutSection = () => {
           <div className={styles.content}>
             <div className={styles.text}>
               <p>{personalData.bio}</p>
-              <div className={styles.stats}>
-                {Object.entries(personalData.stats).map(([key, value]) => (
-                  <div key={key} className={styles.stat}>
-                    <span className={styles.statValue}>{value}</span>
-                    <span className={styles.statLabel}>{key.replace(/([A-Z])/g, ' $1').toLowerCase()}</span>
+
+              {/* Companies */}
+              {personalData.companies && personalData.companies.length > 0 && (
+                <div className={styles.subsection}>
+                  <h3 className={styles.subheading}>Companies I've worked with</h3>
+                  <div className={styles.logoGrid}>
+                    {personalData.companies.map((company) => (
+                      <div key={company.name} className={styles.logoItem}>
+                        <img src={company.logo} alt={company.name} className={styles.logoImage} />
+                        <div className={styles.logoOverlay}>
+                          <p className={styles.logoText}>{company.name}</p>
+                          {company.description && <p className={styles.logoDescription}>{company.description}</p>}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
+
+              {/* Skills */}
+              {personalData.skills && (
+                <div className={styles.subsection}>
+                  <h3 className={styles.subheading}>Skills</h3>
+                  <div className={styles.skillGroup}>
+                    <p className={styles.skillLabel}>Primary:</p>
+                    <ul className={styles.itemList}>
+                      {personalData.skills.primary.map((skill) => (
+                        <li key={skill} className={styles.item}>{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={styles.skillGroup}>
+                    <p className={styles.skillLabel}>Secondary:</p>
+                    <ul className={styles.itemList}>
+                      {personalData.skills.secondary.map((skill) => (
+                        <li key={skill} className={styles.item}>{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
             </div>
           </div>
         </motion.div>

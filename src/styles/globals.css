@@ -17,14 +17,31 @@ body {
 
 .section-title {
   font-size: var(--font-size-4xl);
-  font-weight: 700;
+  font-weight: 900;
   text-align: center;
   margin-bottom: var(--space-2xl);
-  background: var(--gradient-secondary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: white;
+  position: relative;
+  text-shadow:
+    2px 2px 0 #ff595e,
+    4px 4px 0 #ffca3a,
+    6px 6px 0 #8ac926,
+    8px 8px 0 #1982c4,
+    10px 10px 0 #6a4c93;
 }
+
+.section-title:hover {
+  transform: translateY(-4px);
+  text-shadow:
+     3px 3px 0 #ff595e,
+    5px 5px 0 #ffca3a,
+    7px 7px 0 #8ac926,
+    9px 9px 0 #1982c4,
+    11px 11px 0 #6a4c93;
+  transition: all 0.3s ease;
+}
+
+
 
 .btn {
   display: inline-flex;

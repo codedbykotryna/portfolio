@@ -3,6 +3,18 @@ export const personalData = {
   title: process.env.REACT_APP_TITLE || "Senior C# Tools Programmer",
   subtitle: process.env.REACT_APP_SUBTITLE || "WPF & WinForms Specialist",
   bio: process.env.REACT_APP_BIO || "Passionate C# developer with experience in building robust desktop applications using WPF and WinForms.",
+  companies: [
+    {
+      name: 'DMC',
+      logo: `${process.env.PUBLIC_URL}/assets/images/dmc.jpg`,
+      description: 'Software Developer'
+    },
+    {
+      name: 'Kwalee',
+      logo: `${process.env.PUBLIC_URL}/assets/images/kwalee.jpg`,
+      description: 'Senior Tools Programmer'
+    }
+  ],
   location: process.env.REACT_APP_LOCATION || "Your City, Country",
   email: process.env.REACT_APP_EMAIL || "your.email@example.com",
   phone: process.env.REACT_APP_PHONE || "+1 (555) 123-4567",
@@ -13,7 +25,7 @@ export const personalData = {
     website: process.env.REACT_APP_WEBSITE_URL || "https://yourwebsite.com"
   },
   // Update to match your actual file extension
-  avatar: "/assets/images/profile-photo.png", // Keep this as is since it's a file path
+  avatar: "/assets/images/profile-photo.png",
   resume: "/assets/documents/resume.pdf",
   skills: {
     primary: ["C#", "WPF", "WinForms", "MVVM", "Entity Framework"],
