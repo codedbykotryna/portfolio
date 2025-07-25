@@ -87,7 +87,7 @@ export const personalData = {
     },
     {
       name: "Gabsee",
-      logo: `${process.env.PUBLIC_URL}assets/images/companies/gabsee-logo.png`,
+      logo: `${process.env.PUBLIC_URL}assets/images/companies/gabsee_logo.png`,
       position: "Tools Programmer",
       duration: "April 2022 - July 2023 (1 year 4 months)",
       description: "Remote tools programming role focused on developing and maintaining development tools and systems.",
@@ -125,7 +125,7 @@ export const personalData = {
     },
     {
       name: "Lince Works",
-      logo: `${process.env.PUBLIC_URL}assets/images/companies/lince-works-logo.jpg`, // You'll need to add this image
+      logo: `${process.env.PUBLIC_URL}assets/images/companies/lince_works_logo.jpg`, // You'll need to add this image
       position: "Game Programming Intern",
       duration: "March 2018 - August 2018 (6 months)",
       description: "6-month programming internship working on various aspects of game development including shaders, camera behaviors, and UI systems.",
