@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import InteractiveCenter from './InteractiveCenter';
+import { BackgroundGradient } from '../../ui/BackgroundGradient';
 import { personalData } from '../../../data/personal';
 import profilePhoto from '../../../assets/images/profile-photo.png';
 import styles from './HeroSection.module.css';
@@ -31,22 +31,6 @@ const HeroSection = () => {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.particles}>
-        {Array.from({ length: 40 }).map((_, i) => (
-          <div
-            key={i}
-            className={`${styles.particle}`}
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 3}s`,
-            }}
-          ></div>
-        ))}
-      </div>
-
-
       <div className="container">
         <div className={styles.heroGrid}>
           <motion.div 
@@ -83,41 +67,46 @@ const HeroSection = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div 
-                className={styles.imageWrapper}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-                style={{
-                  transform: `rotateX(${-tilt.y}deg) rotateY(${tilt.x}deg)`,
-                  transition: 'transform 0.1s ease-out'
-                }}
+              <BackgroundGradient 
+                className={styles.gradientWrapper}
+                containerClassName={styles.gradientContainer}
+                animate={true}
               >
-                <img 
-                  src={imageSource}
-                  alt={personalData.name}
-                  className={styles.profileImage}
-                  onLoad={handleImageLoad}
-                  onError={handleImageError}
-                  style={{ 
-                    display: imageError ? 'none' : 'block',
-                    opacity: imageLoaded ? 1 : 0 
+                <div 
+                  className={styles.imageWrapper}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+                  style={{
+                    transform: `rotateX(${-tilt.y}deg) rotateY(${tilt.x}deg)`,
+                    transition: 'transform 0.1s ease-out'
                   }}
-                />
-                {!imageLoaded && !imageError && (
-                  <div className={styles.imageLoading}>
-                    <div className={styles.loadingSpinner}></div>
-                  </div>
-                )}
-                {imageError && (
-                  <div className={styles.imageFallback}>
-                    <div className={styles.fallbackContent}>
-                      <span className={styles.fallbackIcon}>👨‍💻</span>
-                      <span className={styles.fallbackText}>C# Developer</span>
+                >
+                  <img 
+                    src={imageSource}
+                    alt={personalData.name}
+                    className={styles.profileImage}
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
+                    style={{ 
+                      display: imageError ? 'none' : 'block',
+                      opacity: imageLoaded ? 1 : 0 
+                    }}
+                  />
+                  {!imageLoaded && !imageError && (
+                    <div className={styles.imageLoading}>
+                      <div className={styles.loadingSpinner}></div>
                     </div>
-                  </div>
-                )}
-                <div className={styles.imageBorder}></div>
-              </div>
+                  )}
+                  {imageError && (
+                    <div className={styles.imageFallback}>
+                      <div className={styles.fallbackContent}>
+                        <span className={styles.fallbackIcon}>👨‍💻</span>
+                        <span className={styles.fallbackText}>C# Developer</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </BackgroundGradient>
             </motion.div>
           </div>
         </div>

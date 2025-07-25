@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ColorfulSectionTitle } from '../../ui/ColorfulSectionTitle';
 import ProjectGrid from './ProjectGrid';
 import ProjectModal from './ProjectModal';
 import { projects } from '../../../data/projects';
@@ -28,7 +29,7 @@ const ProjectsSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title">Featured Projects</h2>
+          <ColorfulSectionTitle>Featured Projects</ColorfulSectionTitle>
           
           <ProjectGrid 
             projects={projects}

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalData } from '../../../data/personal';
+import { ColorfulSectionTitle } from '../../ui/ColorfulSectionTitle';
+import CompanyModal from '../CompanyModal';
 import styles from './AboutSection.module.css';
 
 const AboutSection = () => {
+  const [selectedCompany, setSelectedCompany] = useState(null);
+
   return (
     <section id="about" className={styles.about + ' section'}>
       <div className="container">
@@ -13,7 +17,7 @@ const AboutSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">About Me</h2>
+          <ColorfulSectionTitle>About Me</ColorfulSectionTitle>
           <div className={styles.content}>
             <div className={styles.text}>
               <p>{personalData.bio}</p>
@@ -24,13 +28,19 @@ const AboutSection = () => {
                   <h3 className={styles.subheading}>Companies I've worked with</h3>
                   <div className={styles.logoGrid}>
                     {personalData.companies.map((company) => (
-                      <div key={company.name} className={styles.logoItem}>
+                      <motion.div 
+                        key={company.name} 
+                        className={styles.logoItem}
+                        whileHover={{ y: -5, scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setSelectedCompany(company)}
+                      >
                         <img src={company.logo} alt={company.name} className={styles.logoImage} />
                         <div className={styles.logoOverlay}>
                           <p className={styles.logoText}>{company.name}</p>
                           {company.description && <p className={styles.logoDescription}>{company.description}</p>}
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -63,6 +73,12 @@ const AboutSection = () => {
           </div>
         </motion.div>
       </div>
+      
+      <CompanyModal
+        company={selectedCompany}
+        isOpen={!!selectedCompany}
+        onClose={() => setSelectedCompany(null)}
+      />
     </section>
   );
 };

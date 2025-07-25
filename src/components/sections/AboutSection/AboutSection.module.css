@@ -39,6 +39,7 @@
   color: var(--color-text-muted);
   text-transform: capitalize;
 }
+
 .subsection {
   margin-top: var(--space-xl);
   text-align: left;
@@ -71,16 +72,20 @@
 .logoGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-lg);
+  gap: var(--space-2xl);
   justify-content: center;
   margin-top: var(--space-md);
+  padding: var(--space-lg) 0 80px 0; /* Extra bottom padding for hover elements */
 }
 
 .logoItem {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   transition: transform 0.3s ease;
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 60px; /* Increased space for text below */
 }
 
 .logoItem:hover {
@@ -94,19 +99,27 @@
   border-radius: var(--border-radius-md);
   background-color: rgba(255, 255, 255, 0.05);
   padding: var(--space-xs);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.logoItem:hover .logoImage {
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
 }
 
 .logoOverlay {
   position: absolute;
-  top: 100%;
+  top: 110px; /* Fixed position below the logo */
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
   text-align: center;
-  padding-top: var(--space-xs);
   transition: opacity 0.3s ease;
   pointer-events: none;
   white-space: nowrap;
+  z-index: 1;
 }
 
 .logoItem:hover .logoOverlay {
@@ -117,10 +130,73 @@
   font-weight: 600;
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  margin: 0 0 4px 0;
 }
 
 .logoDescription {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
-  margin-top: 2px;
+  margin: 0;
+}
+
+.clickIndicator {
+  position: absolute;
+  top: 170px; /* Fixed position below company name */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.logoItem:hover .clickIndicator {
+  opacity: 1;
+}
+
+.clickText {
+  background: var(--color-accent);
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.skillGroup {
+  margin-bottom: var(--space-md);
+}
+
+.skillLabel {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+@media (max-width: 768px) {
+  .logoGrid {
+    gap: var(--space-lg);
+    padding: var(--space-md) 0 70px 0; /* Adjusted for mobile */
+  }
+  
+  .logoItem {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 50px; /* Reduced for mobile */
+  }
+  
+  .logoOverlay {
+    top: 90px; /* Adjusted for smaller logo */
+  }
+  
+  .clickIndicator {
+    top: 115px; /* Adjusted for mobile */
+  }
+  
+  .clickText {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
 }

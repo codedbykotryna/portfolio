@@ -1,5 +1,5 @@
 body {
-  background: var(--color-bg-primary);
+  background: transparent; /* Remove static background since we have animated one */
   color: var(--color-text-primary);
   overflow-x: hidden;
 }
@@ -13,35 +13,11 @@ body {
 .section {
   padding: var(--space-3xl) 0;
   position: relative;
+  z-index: 5;
+  /* Add subtle backdrop for better text readability */
+  background: rgba(15, 23, 42, 0.1);
+  backdrop-filter: blur(1px);
 }
-
-.section-title {
-  font-size: var(--font-size-4xl);
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: var(--space-2xl);
-  color: white;
-  position: relative;
-  text-shadow:
-    2px 2px 0 #ff595e,
-    4px 4px 0 #ffca3a,
-    6px 6px 0 #8ac926,
-    8px 8px 0 #1982c4,
-    10px 10px 0 #6a4c93;
-}
-
-.section-title:hover {
-  transform: translateY(-4px);
-  text-shadow:
-     3px 3px 0 #ff595e,
-    5px 5px 0 #ffca3a,
-    7px 7px 0 #8ac926,
-    9px 9px 0 #1982c4,
-    11px 11px 0 #6a4c93;
-  transition: all 0.3s ease;
-}
-
-
 
 .btn {
   display: inline-flex;
@@ -70,21 +46,24 @@ body {
 }
 
 .btn-secondary {
-  background: transparent;
-  border: 2px solid var(--color-accent);
-  color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-text-primary);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: var(--color-accent);
-  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .card {
-  background: var(--color-bg-card);
+  background: rgba(30, 41, 59, 0.7);
   border-radius: var(--border-radius-lg);
   padding: var(--space-lg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition-base);
 }
@@ -92,4 +71,35 @@ body {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-xl);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Add to your global CSS or ColorfulSectionTitle.module.css */
+.colorful-clip {
+  background: linear-gradient(
+    90deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #feca57,
+    #ff9ff3,
+    #54a0ff
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }

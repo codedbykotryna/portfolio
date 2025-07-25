@@ -5,26 +5,7 @@
   position: relative;
   overflow: hidden;
   padding: var(--space-2xl) 0;
-  z-index: 0;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(96, 165, 250, 0.3),
-    transparent 60%
-  ),
-  radial-gradient(
-    circle at 70% 70%,
-    rgba(168, 85, 247, 0.2),
-    transparent 60%
-  );
-  animation: backgroundMove 10s ease-in-out infinite alternate;
-  z-index: -1;
-  filter: blur(60px);
+  z-index: 1;
 }
 
 .heroGrid {
@@ -34,6 +15,8 @@
   align-items: center;
   width: 100%;
   min-height: 500px;
+  position: relative;
+  z-index: 2;
 }
 
 .content {
@@ -47,14 +30,15 @@
   margin-bottom: var(--space-sm);
   color: #ffffff;
   line-height: 1.1;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-
 
 .subtitle {
   font-size: var(--font-size-2xl);
   color: #60a5fa;
   margin-bottom: var(--space-md);
   font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .description {
@@ -62,6 +46,7 @@
   color: var(--color-text-secondary);
   margin-bottom: var(--space-2xl);
   line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .actions {
@@ -80,28 +65,20 @@
   z-index: 1;
 }
 
-/* Debug info - remove this after fixing */
-.debugInfo {
-  position: absolute;
-  top: -60px;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  z-index: 10;
-  text-align: center;
-}
-
-.debugInfo p {
-  margin: 2px 0;
-}
-
 /* Image Styles */
 .imageContainer {
   position: relative;
+}
+
+.gradientContainer {
+  /* Container for the gradient border effect */
+}
+
+.gradientWrapper {
+  background: rgba(30, 41, 59, 0.9);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .imageWrapper {
@@ -109,39 +86,23 @@
   width: 380px;
   height: 380px;
   margin: 0 auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
 }
 
 .profileImage {
   width: 100%;
   height: 100%;
-  border-radius: var(--border-radius-xl); /* Rounded corners instead of circle */
+  border-radius: 1.5rem;
   object-fit: cover;
-  object-position: center top; /* Show more of the top, crop from bottom */
+  object-position: center top;
   position: relative;
   z-index: 2;
-  box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.3),
-    0 0 0 4px rgba(96, 165, 250, 0.1);
   transition: all var(--transition-base);
 }
 
 .profileImage:hover {
-  transform: scale(1.05);
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.4),
-    0 0 0 4px rgba(96, 165, 250, 0.3),
-    0 0 60px rgba(96, 165, 250, 0.2);
-}
-
-.imageBorder {
-  position: absolute;
-  inset: -8px;
-  border-radius: var(--border-radius-xl); /* Match the image border radius */
-  background: var(--gradient-accent);
-  z-index: 1;
-  opacity: 0.7;
-  filter: blur(15px);
-  animation: pulse 3s ease-in-out infinite;
+  transform: scale(1.02);
 }
 
 /* Image Loading State */
@@ -152,7 +113,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(30, 41, 59, 0.8);
-  border-radius: var(--border-radius-xl); /* Match the image border radius */
+  border-radius: 1.5rem;
   backdrop-filter: blur(10px);
   z-index: 3;
 }
@@ -174,7 +135,7 @@
   align-items: center;
   justify-content: center;
   background: var(--gradient-primary);
-  border-radius: var(--border-radius-xl); /* Match the image border radius */
+  border-radius: 1.5rem;
   z-index: 3;
 }
 
@@ -196,17 +157,8 @@
   color: var(--color-text-primary);
 }
 
-/* Interactive Center Container */
-.interactiveContainer {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .noColorChange {
-  color: #ffffff !important; /* or any fixed color */
+  color: #ffffff !important;
   background-color: rgba(255, 255, 255, 0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   transition: none !important;
@@ -216,11 +168,12 @@
 .noColorChange:focus,
 .noColorChange:active {
   color: #ffffff !important;
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
   text-decoration: none !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
-
 
 /* Animations */
 @keyframes spin {
@@ -228,67 +181,15 @@
   100% { transform: rotate(360deg); }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes backgroundMove {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-20px, -20px);
-  }
-}
-
-.particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.2);
-    opacity: 1;
-  }
-}
-
-
 /* Responsive Design */
 @media (max-width: 968px) {
   .heroGrid {
     gap: var(--space-2xl);
   }
-  
+ 
   .imageWrapper {
     width: 250px;
     height: 250px;
-  }
-  
-  .interactiveContainer {
-    width: 350px;
-    height: 350px;
   }
 }
 
@@ -298,25 +199,20 @@
     text-align: center;
     gap: var(--space-2xl);
   }
-  
+ 
   .title {
     font-size: var(--font-size-4xl);
   }
-  
+ 
   .subtitle {
     font-size: var(--font-size-xl);
   }
-  
+ 
   .imageWrapper {
     width: 220px;
     height: 220px;
   }
-  
-  .interactiveContainer {
-    width: 300px;
-    height: 300px;
-  }
-  
+ 
   .actions {
     justify-content: center;
   }
@@ -326,26 +222,21 @@
   .hero {
     padding: var(--space-lg) 0;
   }
- 
+
   .heroGrid {
     gap: var(--space-lg);
   }
-  
+
   .imageWrapper {
     width: 180px;
     height: 180px;
   }
-  
-  .interactiveContainer {
-    width: 250px;
-    height: 250px;
-  }
-  
+
   .actions {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .actions .btn {
     width: 100%;
     justify-content: center;

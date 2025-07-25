@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ColorfulSectionTitle } from '../../ui/ColorfulSectionTitle';
 import styles from './ContactSection.module.css';
 
 const ContactSection = () => {
@@ -12,7 +13,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">Contact</h2>
+          <ColorfulSectionTitle>Contact</ColorfulSectionTitle>
           <p>This section is ready for your content!</p>
         </motion.div>
       </div>
