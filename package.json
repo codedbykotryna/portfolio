@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://codedbykotryna.github.io/portfolio/",
+  "homepage": "https://codedbykotryna.github.io/portfolio",
   "dependencies": {
     "@react-three/drei": "^9.88.13",
     "@react-three/fiber": "^8.18.0",

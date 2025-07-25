@@ -6,7 +6,7 @@ export const personalData = {
   companies: [
     {
       name: `Direct Machining Control`,
-      logo: `${process.env.PUBLIC_URL}assets/images/companies/dmc-logo.png`, 
+      logo: `${process.env.PUBLIC_URL}/assets/images/companies/dmc-logo.png`, 
       position: "Software Developer",
       duration: "September 2023 - Present",
       description: "Leading the development of internal tools that streamline testing and support critical industrial operations—software that engineers and testers rely on every day.",
@@ -42,7 +42,7 @@ export const personalData = {
     },
     {
       name: "Kwalee",
-      logo: `${process.env.PUBLIC_URL}assets/images/companies/kwalee-logo.jpg`,
+      logo: `${process.env.PUBLIC_URL}/assets/images/companies/kwalee-logo.jpg`,
       position: "Tools Software Engineer → Junior Tools Software Engineer → Junior Game Programmer",
       duration: "February 2020 - September 2023 (3 years 8 months)",
       description: "Led development of new systems, mentored junior team members, and created robust project architectures while maintaining legacy code for optimal performance.",
@@ -87,7 +87,7 @@ export const personalData = {
     },
     {
       name: "Gabsee",
-      logo: `${process.env.PUBLIC_URL}assets/images/companies/gabsee_logo.png`,
+      logo: `${process.env.PUBLIC_URL}/assets/images/companies/gabsee_logo.png`,
       position: "Tools Programmer",
       duration: "April 2022 - July 2023 (1 year 4 months)",
       description: "Remote tools programming role focused on developing and maintaining development tools and systems.",
@@ -106,7 +106,7 @@ export const personalData = {
     },
     {
       name: "Tiny Bull Studios",
-      logo: `${process.env.PUBLIC_URL}assets/images/companies/tiny-bull-logo.jpg`, // You'll need to add this image
+      logo: `${process.env.PUBLIC_URL}/assets/images/companies/tiny-bull-logo.jpg`, // You'll need to add this image
       position: "Tools Programming Intern",
       duration: "June 2019 - October 2019 (5 months)",
       description: "Internship focused on learning tools programming in a professional game development environment.",
@@ -125,7 +125,7 @@ export const personalData = {
     },
     {
       name: "Lince Works",
-      logo: `${process.env.PUBLIC_URL}assets/images/companies/lince_works_logo.jpg`, // You'll need to add this image
+      logo: `${process.env.PUBLIC_URL}/assets/images/companies/lince_works_logo.jpg`, // You'll need to add this image
       position: "Game Programming Intern",
       duration: "March 2018 - August 2018 (6 months)",
       description: "6-month programming internship working on various aspects of game development including shaders, camera behaviors, and UI systems.",
@@ -167,7 +167,7 @@ export const personalData = {
     website: process.env.REACT_APP_WEBSITE_URL || "https://yourwebsite.com"
   },
   // Update to match your actual file extension
-  avatar: `${process.env.PUBLIC_URL}assets/images/profile-photo.png`,
+  avatar: `${process.env.PUBLIC_URL}/assets/images/profile-photo.png`,
   resume: "/assets/documents/resume.pdf",
  skills: {
     primary: ["C#", "TypeScript", "React Native", "WPF Development", ".NET", "Unity"],
