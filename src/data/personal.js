@@ -87,7 +87,7 @@ export const personalData = {
     },
     {
       name: "Gabsee",
-      logo: `${process.env.PUBLIC_URL}/assets/images/companies/gabsee_logo.png`,
+      logo: `${process.env.PUBLIC_URL}/assets/images/companies/gabsee_logo.jpg`,
       position: "Tools Programmer",
       duration: "April 2022 - July 2023 (1 year 4 months)",
       description: "Remote tools programming role focused on developing and maintaining development tools and systems.",
